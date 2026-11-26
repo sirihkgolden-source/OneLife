@@ -36,7 +36,7 @@ You need to download it everytime when the game updates.
 
 ### Mac, Linux (Source Code)
 This will download the newest version:
-1. Download [skps2010Build.sh](https://github.com/skps2010/OneLife/blob/master/scripts/skps2010Scripts/skps2010Build.sh) and put it into an empty folder, then run it. This will compile the game.
+1. Download [skps2010Build.sh](https://github.com/sirihkgolden-source/OneLife/blob/main/scripts/skps2010Scripts/skps2010Build.sh) and put it into an empty folder, then run it. This will compile the game.
 2. Run `python3 translator.py`. It will ask you to input a number, then it will translate the whole game into corresponding languages.
 3. Run `OneLifeApp` to play.
 
@@ -96,7 +96,7 @@ You can also join [Kook](https://kook.top/E9cHJL).
 
 ### Mac, Linux（原始碼）
 這會下載最新版本：
-1. 下載 [skps2010Build.sh](https://github.com/skps2010/OneLife/blob/master/scripts/skps2010Scripts/skps2010Build.sh) 並放到空資料夾，然後執行。這會編譯遊戲。
+1. 下載 [skps2010Build.sh](https://github.com/sirihkgolden-source/OneLife/blob/main/scripts/skps2010Scripts/skps2010Build.sh) 並放到空資料夾，然後執行。這會編譯遊戲。
 2. 執行 `python3 translator.py`。他會要求你輸入一個數字，然後將整個遊戲翻成對應的語言。
 3. 執行 `OneLifeApp` 來玩。
 
@@ -163,7 +163,7 @@ You can also join [Kook](https://kook.top/E9cHJL).
 
 ### Mac, Linux（源代码）
 这会下载最新版本：
-1. 下载 [skps2010Build.sh](https://github.com/skps2010/OneLife/blob/master/scripts/skps2010Scripts/skps2010Build.sh) 并放到空文件夹，然后执行。这会编译游戏。
+1. 下载 [skps2010Build.sh](https://github.com/sirihkgolden-source/OneLife/blob/main/scripts/skps2010Scripts/skps2010Build.sh) 并放到空文件夹，然后执行。这会编译游戏。
 2. 执行 `python3 translator.py`。它会要求你输入一个数字，然后将整个游戏翻成对应的语言。
 3. 执行 `OneLifeApp` 来玩。
 
@@ -220,7 +220,7 @@ You can also join [Kook](https://kook.top/E9cHJL).
 
 ### Mac, Linux (Вихідний код)
 Це призведе до завантаження найновішої версії:
-1. Завантажте [skps2010Build.sh](https://github.com/skps2010/OneLife/blob/master/scripts/skps2010Scripts/skps2010Build.sh) і помістіть його до порожньої теки, а потім запустіть. Це призведе до компіляції гри.
+1. Завантажте [skps2010Build.sh](https://github.com/sirihkgolden-source/OneLife/blob/main/scripts/skps2010Scripts/skps2010Build.sh) і помістіть його до порожньої теки, а потім запустіть. Це призведе до компіляції гри.
 2. Запустіть `python3 translator.py`. Він попросить вас ввести число, після чого перекладе всю гру на відповідні мови.
 3. Запустіть `OneLifeApp`, щоб почати грати.
 
