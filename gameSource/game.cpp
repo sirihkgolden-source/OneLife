@@ -7,7 +7,7 @@ int binVersionNumber = versionNumber;
 // Please use this tag to describe your client honestly and uniquely
 // client_official is reserved for the unmodded client
 // do not include whitespace in your tag
-const char *clientTag = "client_official";
+const char *clientTag = "client_skps2010";
 
 
 
@@ -294,10 +294,6 @@ const char *getAppName() {
     return "OneLife";
     }
 
-int getAppVersion() {
-    return versionNumber;
-    }
-
 const char *getLinuxAppName() {
     // no dir-name conflict here because we're using all caps for app name
     return "OneLifeApp";
@@ -306,7 +302,7 @@ const char *getLinuxAppName() {
 
 
 const char *getFontTGAFileName() {
-    return "font_32_64.tga";
+    return "font_32_32.tga";
     }
 
 
@@ -385,6 +381,12 @@ static void updateDataVersionNumber() {
                 }
             }
         }
+    }
+
+int getAppVersion() {
+    if(dataVersionNumber == 0)
+        updateDataVersionNumber();
+    return versionNumber;
     }
 
 

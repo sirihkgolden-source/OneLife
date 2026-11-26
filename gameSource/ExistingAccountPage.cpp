@@ -22,6 +22,8 @@
 #include "minorGems/graphics/openGL/KeyboardHandlerGL.h"
 
 #include "minorGems/util/random/JenkinsRandomSource.h"
+#include <sys/stat.h>
+#include <unistd.h>
 
 static JenkinsRandomSource randSource;
 
@@ -94,6 +96,8 @@ ExistingAccountPage::ExistingAccountPage()
                            translate( "tutorial" ) ),
           mServicesButton( mainFont, -522, 300, 
                            translate( "services" ) ),
+          mTranslateButton( mainFont, -522, 80, 
+                           translate( "translateButton" ) ),
           mAHAPSettingsButton( mainFont, -522, 0, 
                                translate( "ahapSettings" ) ),
           mPageActiveStartTime( 0 ),
@@ -124,6 +128,7 @@ ExistingAccountPage::ExistingAccountPage()
     setButtonStyle( &mViewAccountButton );
     setButtonStyle( &mTutorialButton );
     setButtonStyle( &mServicesButton );
+    setButtonStyle( &mTranslateButton );
     setButtonStyle( &mAHAPSettingsButton );
 
     setButtonStyle( &mDisableCustomServerButton );
@@ -160,6 +165,7 @@ ExistingAccountPage::ExistingAccountPage()
     addComponent( &mViewAccountButton );
     addComponent( &mTutorialButton );
     addComponent( &mServicesButton );
+    addComponent( &mTranslateButton );
     addComponent( &mAHAPSettingsButton );
     
     mLoginButton.addActionListener( this );
@@ -183,6 +189,7 @@ ExistingAccountPage::ExistingAccountPage()
     mViewAccountButton.addActionListener( this );
     mTutorialButton.addActionListener( this );
     mServicesButton.addActionListener( this );
+    mTranslateButton.addActionListener( this );
     mAHAPSettingsButton.addActionListener( this );
     
     mDisableCustomServerButton.addActionListener( this );
@@ -200,6 +207,7 @@ ExistingAccountPage::ExistingAccountPage()
     mGenesButton.setMouseOverTip( translate( "genesTip" ) );
     mFamilyTreesButton.setMouseOverTip( translate( "familyTreesTip" ) );
     mTechTreeButton.setMouseOverTip( translate( "techTreeTip" ) );
+    mTranslateButton.setMouseOverTip( translate( "translateTip" ) );
     
     mServicesButton.setMouseOverTip( translate( "servicesTip" ) );
     
@@ -582,6 +590,55 @@ void ExistingAccountPage::actionPerformed( GUIComponent *inTarget ) {
         SettingsManager::setSetting( "useCustomServer", 0 );
         mDisableCustomServerButton.setVisible( false );
         processLogin( true, "done" );
+        }
+    else if( inTarget == &mTranslateButton ) {
+        struct stat buffer;
+        
+#ifdef __mac__
+        if(stat ("translator", &buffer) == 0) {
+            system("open translator; sleep 1.0; while pgrep -f translator >/dev/null; do sleep 1.0; done");
+        }
+        else
+            system("open translator.py -a Terminal; sleep 1.0; while pgrep -f translator >/dev/null; do sleep 1.0; done");
+
+#elif defined(WIN32)
+        char fullscreen = SettingsManager::getIntSetting("fullscreen", 0);
+        if(fullscreen) {
+            char cwd[PATH_MAX];
+            getcwd(cwd, sizeof(cwd));
+            char *call;
+
+            if(stat ("translator.exe", &buffer) == 0) {
+                call = autoSprintf("wmic process call create 'cmd /c start translator.exe', '%s'", cwd ); 
+            }
+            else
+                call = autoSprintf("wmic process call create 'cmd /c python3 translator.py', '%s'", cwd );    
+            system( call );
+            delete [] call;
+            exit(0);
+        }
+        else {
+            if(stat ("translator.exe", &buffer) == 0) {
+                system("translator.exe");
+            }
+            else
+                system("python3 translator.py");
+        }
+            
+#else
+        system("x-terminal-emulator -e python3 translator.py");
+#endif
+
+        char relaunched = relaunchGame();
+        
+        if( !relaunched ) {
+            printf( "Relaunch failed\n" );
+            setSignal( "relaunchFailed" );
+            }
+        else {
+            printf( "Relaunched... but did not exit?\n" );
+            setSignal( "relaunchFailed" );
+            }
         }
     }
 

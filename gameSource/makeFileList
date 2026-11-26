@@ -87,6 +87,7 @@ GridPos.cpp \
 
 GAME_GRAPHICS = \
 graphics/font_32_64.tga \
+graphics/font_32_32.tga \
 graphics/font_handwriting_32_32.tga \
 graphics/font_pencil_32_32.tga \
 graphics/font_pencil_erased_32_32.tga \
@@ -135,7 +136,6 @@ graphics/photoDisplay1.tga \
 graphics/photoDisplay2.tga \
 graphics/photoDisplay3.tga \
 graphics/photoDisplay4.tga \
-
 
 
 NEEDED_MINOR_GEMS_OBJECTS = \
