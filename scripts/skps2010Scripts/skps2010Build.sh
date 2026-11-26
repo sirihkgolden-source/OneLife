@@ -12,7 +12,7 @@ fi
 
 if [ ! -e OneLifeData7 ]
 then
-	git clone https://github.com/jasonrohrer/OneLifeData7.git	
+	git clone https://github.com/sirihkgolden-source/OneLifeData7.git	
 fi
 
 
