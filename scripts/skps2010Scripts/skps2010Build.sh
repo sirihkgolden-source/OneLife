@@ -2,12 +2,12 @@
 
 if [ ! -e minorGems ]
 then
-	git clone https://github.com/skps2010/minorGems.git	
+	git clone https://github.com/sirihkgolden-source/minorGems.git	
 fi
 
 if [ ! -e OneLife ]
 then
-	git clone https://github.com/skps2010/OneLife.git
+	git clone https://github.com/sirihkgolden-source/OneLife.git
 fi
 
 if [ ! -e OneLifeData7 ]
